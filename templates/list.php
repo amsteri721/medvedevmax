@@ -3,10 +3,10 @@
 <h1>Entries in my blog</h1>
 
 	<?php 	foreach ($entry as $row) { ?>	
-		<h3><a href="?act=view-entry&id=<?=$row['id'];?>"><?=$row['header'];?></a></h3>
+		<h3><a href="?act=entry&id=<?=$row['id'];?>"><?=$row['header'];?></a></h3>
 		<p><?=$row['content'];?></p>
 		<p><?=$row['date'];?></p>
-		<?=$row['comments'];?> <a href="?act=view-entry&id=<?=$row['id'];?>">comments</a>		
+		<?=$row['comments'];?> <a href="?act=entry&id=<?=$row['id'];?>">comments</a>		
 
 		<?php if($_SESSION['login']=='admin') {?>
 			<li><a href="?act=edit-entry&id=<?=$row['id'];?>">Edit entry</a></li>
