@@ -1,0 +1,33 @@
+.content{
+	margin-top: 45px;
+}
+
+h2 a{
+	color: black;
+}
+
+h2 a:hover{
+	text-decoration: none;
+	color: #444;
+}
+
+.entry-content{
+	height: 150px;
+	overflow: hidden;
+}
+
+h2 {
+	text-align: center;
+}
+
+.center{
+	text-align: center;
+}
+
+.page{
+	text-align: center;
+}
+
+.login{
+	color: white;
+}

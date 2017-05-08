@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-	<h3><a href="?act=view-entry&id=<?=$entry['id'];?>"><?=$entry['header'];?></a></h3>
+	<h3><a href="?act=entry&id=<?=$entry['id'];?>"><?=$entry['header'];?></a></h3>
 		<p><?=$entry['content'];?></p>
 		<p><?=$entry['date'];?></p>
 		<?php if($_SESSION['login']=='admin') {?>

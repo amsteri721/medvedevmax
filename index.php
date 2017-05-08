@@ -9,7 +9,7 @@
 	switch ($act) {
 		case 'list':
 			$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-			$num = 2;
+			$num = 3;
 			$pages_result = $handler->query("SELECT COUNT(*) AS num FROM entry")->fetch();
 			$pages = $pages_result['num'];
 			$total = intval(($pages - 1)/$num)+1;
@@ -29,6 +29,7 @@
 				$row['date'] = date('d-m-Y H:i:s', $row['date']);
 				if (strlen($row['content']) > 100) {
 					$row['content'] = substr(strip_tags($row['content']), 0, 97) . '...';
+					$row['content'] = nl2br($row['content']);
 				}
 
 				$entry[] = $row;
@@ -43,6 +44,7 @@
 			$res = $handler->query("SELECT * FROM entry WHERE id=$id");
 			$entry = $res->fetch(PDO::FETCH_ASSOC);
 			if (!$entry) die("No such entry");
+			$entry['content'] = nl2br($entry['content']);
 			$entry['date'] = date('d-m-Y H:i:s', $entry['date']);
 
 			$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
@@ -56,6 +58,7 @@
 			$res = $handler->query("SELECT * FROM comments WHERE entry_id=$id ORDER BY date DESC LIMIT $start, $num");
 			while($row = $res->fetch(PDO::FETCH_ASSOC)){
 				$row['date'] = date('d-m-Y H:i:s', $row['date']);
+				$row['content'] = nl2br($row['content']);
 				$comments[] = $row;
 			}
 			require 'templates/entry.php';
