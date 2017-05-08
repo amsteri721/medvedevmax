@@ -5,7 +5,7 @@
 		<div class="col-md-4">
 			<h2><a href="?act=entry&id=<?=$row['id'];?>"><?=$row['header'];?></a></h2>
 			<p class="entry-content"><?=$row['content'];?></p>
-			<p><?=$row['date'];?></p>
+			<p><strong>Date:</strong> <?=$row['date'];?></p>
 			<?=$row['comments'];?> <a href="?act=entry&id=<?=$row['id'];?>">comments</a>
 		<p class="center"><a class="btn btn-default" href="?act=entry&id=<?=$row['id'];?>" role="button">View details &raquo;</a></p>
 		<?php if($_SESSION['login']=='admin') {?>

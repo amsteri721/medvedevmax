@@ -22,21 +22,23 @@
 		<p><?=$row['content']; ?></p>
 		<p><?=$row['date']; ?></p>
 <?php } }?>
+<br>
+<ul class="pagination">
+	<?php  
+		if ($page != 1) 
+			$pervpage = '<a href= ./?act=entry&id=' . $entry['id'] . '&page=1><<</a> <a href= ./?page='. ($page - 1) .'><</a> '; 
+		if ($page != $total) $nextpage = ' <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 1) .'>></a> <a href= ./?act=entry&id=' . $entry['id'] . '&page=' .$total. '>>></a>'; 
 
-<br><strong>PAGES:</strong>
-<?php  
-	if ($page != 1) 
-		$pervpage = '<a href= ./?act=entry&id=' . $entry['id'] . '&page=1><<</a> <a href= ./?page='. ($page - 1) .'><</a> '; 
-	if ($page != $total) $nextpage = ' <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 1) .'>></a> <a href= ./?page=' .$total. '>>></a>'; 
+		if($page - 2 > 0) 
+			$page2left = ' <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page - 2) .'>'. ($page - 2) .'</a>  '; 
+		if($page - 1 > 0) 
+			$page1left = '<a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page - 1) .'>'. ($page - 1) .'</a>  '; 
+		if($page + 2 <= $total) 
+			$page2right = '  <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 2) .'>'. ($page + 2) .'</a>'; 
+		if($page + 1 <= $total) 
+			$page1right = '  <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
 
-	if($page - 2 > 0) 
-		$page2left = ' <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page - 2) .'>'. ($page - 2) .'</a> | '; 
-	if($page - 1 > 0) 
-		$page1left = '<a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page - 1) .'>'. ($page - 1) .'</a> | '; 
-	if($page + 2 <= $total) 
-		$page2right = ' | <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 2) .'>'. ($page + 2) .'</a>'; 
-	if($page + 1 <= $total) 
-		$page1right = ' | <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
-
-	echo $pervpage.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$nextpage; 
-?>
+		echo '<li>'.$pervpage.'</li>'.'<li>'.$page2left.'</li>'.'<li>'.$page1left.'</li>'.'<li class="active"><span>'.$page.'</span></li>'.'<li>'.$page1right.'</li>'.'<li>'.$page2right.'</li>'.'<li>'.$nextpage;  
+	?>
+</ul>
+<?php require 'footer.php'; ?>

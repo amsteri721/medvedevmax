@@ -47,6 +47,12 @@
           <a class="navbar-brand" href="?">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="?">Home</a></li>
+          <?php if($_SESSION['login']=='admin') {?>
+          <li><a href="?act=add-entry">Add entry</a></li>
+          <?php } ?>
+        </ul>
         <?php if(!isset($_SESSION['login'])){?>
           <form class="navbar-form navbar-right" method="post" action="?act=val-login">
             <div class="form-group">
@@ -56,6 +62,7 @@
               <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
+            <a href="?act=reg" class="btn btn-success">Regestration</a>
           </form>
         <?php } else { ?>
         <form class="navbar-form navbar-right">

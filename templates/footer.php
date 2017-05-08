@@ -1,6 +1,6 @@
    <hr>
       <footer>
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2017 Medvedev Maxym, Inc.</p>
       </footer>
     </div> <!-- /container -->
 

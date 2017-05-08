@@ -1,7 +1,13 @@
 <?php  
-	//Перевірка на авторизацію користувача
+	//Перевірка доступу
 	function is_user(){
 		if (isset($_SESSION['login'])) {
+			die(header("HTTP/1.0 404 Not Found"));
+		}
+	}
+
+	function is_user_login(){
+		if (!isset($_SESSION['login'])) {
 			die(header("HTTP/1.0 404 Not Found"));
 		}
 	}

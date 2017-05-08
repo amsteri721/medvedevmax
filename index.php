@@ -27,8 +27,8 @@
 
 			while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
 				$row['date'] = date('d-m-Y H:i:s', $row['date']);
-				if (strlen($row['content']) > 100) {
-					$row['content'] = substr(strip_tags($row['content']), 0, 97) . '...';
+				if (strlen($row['content']) > 300) {
+					$row['content'] = substr(strip_tags($row['content']), 0, 297) . '...';
 					$row['content'] = nl2br($row['content']);
 				}
 
@@ -48,7 +48,7 @@
 			$entry['date'] = date('d-m-Y H:i:s', $entry['date']);
 
 			$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-			$num = 2;
+			$num = 5;
 			$pages_result = $handler->query("SELECT COUNT(*) AS num FROM comments WHERE entry_id=$id")->fetch();
 			$pages = $pages_result['num'];
 			$total = intval(($pages - 1)/$num)+1;
@@ -174,7 +174,7 @@
 			break;
 
 		case 'add-com':
-			is_user();
+			is_user_login();
 			$id = $_POST['id'];
 			$author = $_SESSION['login'];
 			$comment = nl2br(convert($_POST['comment']));

@@ -6,6 +6,3 @@
 			<li><a href="?act=edit-entry&id=<?=$entry['id'];?>">Edit entry</a></li>
 			<li><a href="?act=del-entry&id=<?=$entry['id'];?>">Delete entry</a></li>
 		<?php } ?> 
-
-
-<?php require 'footer.php'; ?>
