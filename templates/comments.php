@@ -21,7 +21,7 @@
 		<h3><?=$row['author']; ?></h3>
 		<p><?=$row['content']; ?></p>
 		<p><?=$row['date']; ?></p>
-<?php } }?>
+<?php }?>
 <br>
 <ul class="pagination">
 	<?php  
@@ -39,6 +39,7 @@
 			$page1right = '  <a href= ./?act=entry&id=' . $entry['id'] . '&page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
 
 		echo '<li>'.$pervpage.'</li>'.'<li>'.$page2left.'</li>'.'<li>'.$page1left.'</li>'.'<li class="active"><span>'.$page.'</span></li>'.'<li>'.$page1right.'</li>'.'<li>'.$page2right.'</li>'.'<li>'.$nextpage;  
+	}
 	?>
 </ul>
 <?php require 'footer.php'; ?>

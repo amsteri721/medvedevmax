@@ -77,7 +77,7 @@
 			$res = $handler->query("SELECT * FROM users WHERE login='$login'");
 			$row = $res->fetch(PDO::FETCH_ASSOC);
 			if (empty($row['password'])) {
-				die("Wrong login or password. <a href='?act=login'>To retry</a>");
+				die("Wrong login or password. <a href='?'>To retry</a>");
 			} else {
 				if ($row['password'] == $password) {
 					$_SESSION['login'] = $login;
@@ -85,7 +85,7 @@
 					header('Location: .');
 				}
 				else {
-					die("Wrong login or password. <a href='?act=login'>To retry</a>");
+					die("Wrong login or password. <a href='?'>To retry</a>");
 				}
 			}
 			break;
@@ -132,8 +132,11 @@
 			$content = nl2br(convert($_POST['content']));
 			$date = strtotime("now");
 		
-			$res = $handler->prepare("INSERT INTO entry (header, content, date) VALUES (?, ?, ?)");
-			$res->execute(array($header, $content, $date));
+			$res = $handler->prepare("INSERT INTO entry (header, content, date) VALUES (:header, :content, :date)");
+			$res->bindParam(':header', $header); 
+			$res->bindParam(':content', $content); 
+			$res->bindParam(':date', $date); 
+			$res->execute();
 			header('Location: .');
 			break;
 
@@ -186,6 +189,6 @@
 			break;
 
 		default:
-			die("No such action");
+			die(header("HTTP/1.0 404 Not Found"));
 	}
 ?>

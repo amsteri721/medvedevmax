@@ -17,21 +17,24 @@
 	</div>
 <div class="page">
 	<ul class="pagination">
-		<?php  
-			if ($page != 1) 
-				$pervpage = '<a href= ./?page=1><<</a> <a href= ./?page='. ($page - 1) .'><</a>'; 
-			if ($page != $total) $nextpage = ' <a href= ./?page='. ($page + 1) .'>></a> <a href= ./?page=' .$total. '>>></a>'; 
+		<?php 
+			if (empty($row)){
+				echo "<h1>Not entry<h2>";
+			} else {
+				if ($page != 1) 
+					$pervpage = '<a href= ./?page=1><<</a> <a href= ./?page='. ($page - 1) .'><</a>'; 
+				if ($page != $total) $nextpage = ' <a href= ./?page='. ($page + 1) .'>></a> <a href= ./?page=' .$total. '>>></a>'; 
 
-			if($page - 2 > 0) 
-				$page2left = ' <a href= ./?page='. ($page - 2) .'>'. ($page - 2) .'</a> '; 
-			if($page - 1 > 0) 
-				$page1left = '<a href= ./?page='. ($page - 1) .'>'. ($page - 1) .'</a> '; 
-			if($page + 2 <= $total) 
-				$page2right = ' <a href= ./?page='. ($page + 2) .'>'. ($page + 2) .'</a>'; 
-			if($page + 1 <= $total) 
-				$page1right = ' <a href= ./?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
-
-			echo '<li>'.$pervpage.'</li>'.'<li>'.$page2left.'</li>'.'<li>'.$page1left.'</li>'.'<li class="active"><span>'.$page.'</span></li>'.'<li>'.$page1right.'</li>'.'<li>'.$page2right.'</li>'.'<li>'.$nextpage; 
+				if($page - 2 > 0) 
+					$page2left = ' <a href= ./?page='. ($page - 2) .'>'. ($page - 2) .'</a> '; 
+				if($page - 1 > 0) 
+					$page1left = '<a href= ./?page='. ($page - 1) .'>'. ($page - 1) .'</a> '; 
+				if($page + 2 <= $total) 
+					$page2right = ' <a href= ./?page='. ($page + 2) .'>'. ($page + 2) .'</a>'; 
+				if($page + 1 <= $total) 
+					$page1right = ' <a href= ./?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
+				echo '<li>'.$pervpage.'</li>'.'<li>'.$page2left.'</li>'.'<li>'.$page1left.'</li>'.'<li class="active"><span>'.$page.'</span></li>'.'<li>'.$page1right.'</li>'.'<li>'.$page2right.'</li>'.'<li>'.$nextpage; 
+			}
 		?> 
 	</ul>
 </div>
