@@ -13,7 +13,7 @@
 	  <div class="form-group">
 	    <label for="inputPassword3" class="col-sm-2 control-label">Content</label>
 	    <div class="col-sm-4">
-	      <textarea name="content" class="form-control" id="inputPassword3" rows="10"><?=$row['content']?></textarea>
+	      <textarea name="content" class="form-control" id="inputPassword3" rows="10" required ><?=$row['content']?></textarea>
 	    </div>
 	  </div>
 	  <div class="form-group">

@@ -4,7 +4,7 @@
 	<form action="?act=add-com" method="post">
 		<h3>Add comment</h3>
 		<input type="hidden" name="id" value="<?=$entry['id']?>">
-		<textarea name="comment" id="" cols="30" rows="10"></textarea>
+		<textarea name="comment" id="" cols="30" rows="10" required></textarea>
 		<p><input type="submit" value="ADD"></p>
 	</form>
 <?php
